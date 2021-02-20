@@ -4,8 +4,8 @@ import math
 
 pygame.init()
 
-width=height=400
-screen=pygame.display.set_mode((400,400))
+width=height=500
+screen=pygame.display.set_mode((width,height))
 
 class spot:
     def __init__(self, i,j):
@@ -69,7 +69,7 @@ for i in range (cols):
 
 #start node
 start = grid[2][2]
-end = grid[3][20]
+end = grid[49][49]
 
 
 
@@ -101,8 +101,7 @@ def main():
                 path.append(temp)
                 temp=temp.previous
             for i in range(len(path)):
-                path[i].show(blue,0)
-            input(pygame.event.wait())   
+                path[i].show(blue,0) 
         
 
         openset.pop(lowestindex)
@@ -119,8 +118,7 @@ def main():
                 else:
                     neighbor.g = tempG
                     openset.append(neighbor)
-                    if flag==0 :
-                        neighbor.show(green, 0)  # Show opensets
+                    neighbor.show(green, 0)  # Show opensets
 
             neighbor.h = heuristic(neighbor,end)
             neighbor.f = neighbor.g + neighbor.h
@@ -145,4 +143,4 @@ while True:
         #pygame.display.quit()
         pygame.quit()
         sys.exit()
-    main(flag)
+    main()
